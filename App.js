@@ -1,42 +1,36 @@
-import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-// استيراد مزود السياق (Context Provider)
-import { UserProvider } from './UserContext'; 
+import React from 'react';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 
-// استيراد الشاشات
-import HomeScreen from './HomeScreen';
-import DetailsScreen from './DetailsScreen';
-import AddScreen from './AddScreen'; 
-
-const Stack = createNativeStackNavigator();
-
-const App = () => {
+export default function App() {
   return (
-    // تغليف التطبيق كله بمزود Context
-    <UserProvider> 
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen 
-            name="Home" 
-            component={HomeScreen} 
-            options={{ title: 'قائمة المستخدمين' }} 
-          />
-          <Stack.Screen 
-            name="Details" 
-            component={DetailsScreen} 
-            options={{ title: 'التفاصيل' }} 
-          />
-          <Stack.Screen 
-            name="Add" 
-            component={AddScreen} 
-            options={{ title: 'إضافة جديد' }} 
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </UserProvider>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.box}>
+        <Text style={styles.title}>مرحباً بالعالم!</Text>
+        <Text style={styles.subtitle}>مشروع React Native يعمل 100%</Text>
+      </View>
+    </SafeAreaView>
   );
 }
 
-export default App;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#f5f5f5',
+  },
+  box: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  title: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  subtitle: {
+    fontSize: 18,
+    marginTop: 20,
+    color: '#666',
+  },
+});
